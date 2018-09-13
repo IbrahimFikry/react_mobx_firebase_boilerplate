@@ -27,7 +27,6 @@ class Dashboard extends React.Component{
     )
   }
 }
-Dashboard = inject('mobx_auth')(observer(Dashboard))
 
 class About extends React.Component{
   render() {
@@ -52,7 +51,7 @@ class NoMatch extends React.Component{
   render() {
     return(
       <div>
-      404
+      Error 404
       </div>
     )
   }
@@ -64,8 +63,9 @@ class LoginPage extends React.Component{
   }
 
   _skip = () => {
-    console.log();
+    console.log("skip");
     this.props.mobx_auth.setCheck(true);
+    render => {return (<Redirect to='/about'/>)};
   }
 
 
@@ -73,9 +73,15 @@ class LoginPage extends React.Component{
     return(
       <div>
         <div>
-        Press to login
-        </div>
-        <div>
+          <div>
+          Email:
+          <input placeholder="Email"/>
+          </div>
+          <div>
+          Password:
+          <input placeholder="Password"/>
+          </div>
+          
           <button onClick={this._login}>Submit</button>
           <button onClick={this._skip}>Skip Auth</button>
         </div>
