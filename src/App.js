@@ -3,18 +3,34 @@ import logo from './logo.svg';
 import { Switch, Route, Router, Redirect } from 'react-router'
 import './App.css';
 import createBrowserHistory from 'history/createBrowserHistory'
+import { inject, observer, Provider } from 'mobx-react';
+
+import stores from './stores';
 
 const history = createBrowserHistory()
 
-class Home extends React.Component{
+class Dashboard extends React.Component{
+  constructor(props){
+    super(props);
+  }
+
+  _logout = () => {
+    // console.log();
+    this.props.mobx_auth.setCheck(false);
+  }
+
+
   render() {
     return(
       <div>
-      Home
+        Dashboard
+        <button onClick={this._logout}>Logout</button>
       </div>
     )
   }
 }
+Dashboard = inject('mobx_auth')(observer(Dashboard))
+
 class About extends React.Component{
   render() {
     return(
@@ -49,6 +65,12 @@ class LoginPage extends React.Component{
     console.log("Logging in");
   }
 
+  _skip = () => {
+    console.log();
+    this.props.mobx_auth.setCheck(true);
+  }
+
+
   render() {
     return(
       <div>
@@ -57,54 +79,80 @@ class LoginPage extends React.Component{
         </div>
         <div>
           <button onClick={this._login}>Submit</button>
+          <button onClick={this._skip}>Skip Auth</button>
         </div>
 
       </div>
     )
   }
 }
+LoginPage = inject('mobx_auth')(observer(LoginPage))
 
-class LoadingStackNav extends React.Component{
-  constructor(props){
-    super(props);
-    this.state = {
-      check: false,
-    }
-  }
+class LoggedIn extends React.Component{
   render(){
-
-    if(this.state.check === true){
-      return (<Redirect to="/home"/>)
-    }
-    if(this.state.check === false) {
-      return (<Redirect to="/login"/>)
-    }
-
-
     return(
-      <div>
-        <h1>Its loading boii~~</h1>
-      </div>
-    );
-  }
-}
-
-
-class Root extends Component {
-  render() {
-    return (
       <Router history={history}>
         <Switch>
-          <Route exact path="/" component={LoadingStackNav}/>
-          <Route path="/home" component={Home}/>
+          <Route exact path="/" component={Dashboard}/>
+          <Route path="/dashboard" component={Dashboard}/>
           <Route path="/login" component={LoginPage}/>
           <Route path="/about" component={About}/>
           <Route path="/user/:hmm" component={User}/>
           <Route component={NoMatch}/>
         </Switch>
       </Router>
+    )
+  }
+}
+class NotLogged extends React.Component{
+  render(){
+    return(
+      <Router history={history}>
+        <Switch>
+          <Route exact path="/" component={LoginPage}/>
+          <Route component={NoMatch}/>
+        </Switch>
+      </Router>
+    )
+  }
+}
+class LoadingStackNav extends React.Component{
+  constructor(props){
+    super(props);
+  }
+  render(){
+
+    if(this.props.mobx_auth.check === true){
+      return (<LoggedIn/>)
+    }
+    if(this.props.mobx_auth.check === false) {
+      return (<NotLogged/>)
+    }
+  }
+}
+LoadingStackNav = inject('mobx_auth')(observer(LoadingStackNav))
+
+class Root extends Component {
+  render() {
+    return (
+      <Provider {...stores}>
+        <LoadingStackNav/>
+      </Provider>
     );
   }
 }
 
 export default Root;
+
+
+
+// <Router history={history}>
+//   <Switch>
+//     <Route exact path="/" component={LoadingStackNav}/>
+//     <Route path="/home" component={Home}/>
+//     <Route path="/login" component={LoginPage}/>
+//     <Route path="/about" component={About}/>
+//     <Route path="/user/:hmm" component={User}/>
+//     <Route component={NoMatch}/>
+//   </Switch>
+// </Router>
