@@ -362,7 +362,7 @@ padding-left: 10px;
 }
 
 .bgImage{
-  background-image: url('./assets/malaysia.jpg');
+  background-image: url('./assets/background-cyber.png');
   top:0;
   left: 0;
   width:100%;
@@ -379,7 +379,7 @@ padding-left: 10px;
   z-index: 30;
   content: "";
   display: block;
-  opacity: 0.8;
+  opacity: 0.5;
   position: absolute;
   background: #000;
 }

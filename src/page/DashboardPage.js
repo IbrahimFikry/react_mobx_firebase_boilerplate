@@ -34,31 +34,11 @@ export default class App extends React.Component{
             <a className="linkf"><Link to="/tour/add" className="linkline">
               <div className="tabf">
                 <img src={tour} className="icon" alt="" />
-                <div className="titlee"> Tour </div>
+                <div className="titlee"> Devices </div>
               </div>
               </Link>
             </a>
-            <a className="linkf"><Link to="/chaffeur/list" className="linkline">
-              <div className="tabf">
-                <img src={chaf} className="icon" alt="" />
-                <div className="titlee"> Chaffeur</div>
-              </div>
-              </Link>
-            </a>
-            <a className="linkf"><Link to="/activity/list" className="linkline">
-              <div className="tabf">
-                <img src={acti} className="icon" alt="" />
-                <div className="titlee">Activity</div>
-              </div>
-              </Link>
-            </a>
-            <a className="linkf"> <Link to="/customer" className="linkline">
-              <div className="tabf">
-                <img src={users} className="icon" alt="" />
-                <div className="titlee">Customer</div>
-              </div>
-              </Link>
-            </a>
+            
 
           </ul>
         </div>
