@@ -7,6 +7,10 @@ import { inject, observer, Provider } from 'mobx-react';
 
 import stores from './stores';
 
+//import Dashboard from './page/DashboardPage.js';
+
+import LogOut from './components/LogoutButton.js';
+
 const history = createBrowserHistory()
 
 class Dashboard extends React.Component{
@@ -14,17 +18,11 @@ class Dashboard extends React.Component{
     super(props);
   }
 
-  _logout = () => {
-    // console.log();
-    this.props.mobx_auth.setCheck(false);
-  }
-
-
   render() {
     return(
       <div>
         Dashboard
-        <button onClick={this._logout}>Logout</button>
+        <LogOut/>
       </div>
     )
   }
