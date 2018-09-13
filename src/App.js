@@ -7,7 +7,7 @@ import { inject, observer, Provider } from 'mobx-react';
 
 import stores from './stores';
 
-//import Dashboard from './page/DashboardPage.js';
+import Dashboard2 from './page/DashboardPage.js';
 
 import LogOut from './components/LogoutButton.js';
 
@@ -81,7 +81,7 @@ class LoginPage extends React.Component{
           Password:
           <input placeholder="Password"/>
           </div>
-          
+
           <button onClick={this._login}>Submit</button>
           <button onClick={this._skip}>Skip Auth</button>
         </div>
@@ -97,7 +97,7 @@ class LoggedIn extends React.Component{
     return(
       <Router history={history}>
         <Switch>
-          <Route exact path="/" component={Dashboard}/>
+          <Route exact path="/" component={Dashboard2}/>
           <Route path="/dashboard" component={Dashboard}/>
           <Route path="/login" component={LoginPage}/>
           <Route path="/about" component={About}/>
