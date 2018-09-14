@@ -22,6 +22,7 @@ import app from "./base";
 import Home from "./Home";
 import LogIn from "./Login/index.js";
 import SignUp from "./SignUp/index.js";
+import Dashboard from "./Dashboard/index.js";
 
 class App extends React.Component {
   state = { loading: true, authenticated: false, user: null };
@@ -55,12 +56,8 @@ class App extends React.Component {
     return (
       <Router>
         <div>
-          <PrivateRoute
-            exact
-            path="/"
-            component={Home}
-            authenticated={authenticated}
-          />
+          <PrivateRoute exact path="/" component={Home} authenticated={authenticated}/>
+          <PrivateRoute exact path="/dashboard" component={Dashboard} authenticated={authenticated}/>
           <Route exact path="/login" component={LogIn} />
           <Route exact path="/signup" component={SignUp} />
         </div>
