@@ -19,6 +19,8 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 import PrivateRoute from "./PrivateRoute";
 import app from "./value.js";
 
+import './App.css';
+
 import Home from "./Home";
 import LogIn from "./Login/index.js";
 import SignUp from "./SignUp/index.js";
@@ -50,7 +52,7 @@ class App extends React.Component {
     const { authenticated, loading } = this.state;
 
     if (loading) {
-      return <p>Loading..</p>;
+      return <div class="loader-background"><div class="lds-ripple"><div></div><div></div></div></div>;
     }
 
     return (
