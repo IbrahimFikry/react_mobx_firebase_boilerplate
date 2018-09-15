@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { withRouter } from "react-router";
-import app from "../base";
+import app from "../value";
 
 import LoginView from "./LoginView";
 

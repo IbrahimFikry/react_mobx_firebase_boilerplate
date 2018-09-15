@@ -5,22 +5,13 @@ const SignUpView = ({ onSubmit }) => {
     <div>
       <h1>Log in</h1>
       <form onSubmit={onSubmit}>
-        <label>
-          Email
-          <input
-            name="email"
-            type="email"
-            placeholder="Email"
-          />
+        <label>Email
+          <div><input name="email" type="email" placeholder="Email"/></div>
         </label>
-        <label>
-          Password
-          <input
-            name="password"
-            type="password"
-            placeholder="Password"
-          />
+        <label>Password
+          <div><input name="password" type="password" placeholder="Password"/></div>
         </label>
+
         <button type="submit">Log in</button>
       </form>
     </div>

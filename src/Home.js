@@ -1,5 +1,6 @@
 import React from "react";
-import app from "./base";
+import app from "./value";
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 
 class Home extends React.Component{
 
@@ -18,6 +19,8 @@ class Home extends React.Component{
     return(
       <div>
         <h1>Home</h1>
+        <p>Maybe put some tutorial here about infonomics and ade butang skip</p>
+        <Link to="/dashboard"><button>Skip</button></Link>
         <button onClick={this._logout}>Logout</button>
       </div>
     )

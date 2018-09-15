@@ -17,7 +17,7 @@ import React from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 
 import PrivateRoute from "./PrivateRoute";
-import app from "./base";
+import app from "./value.js";
 
 import Home from "./Home";
 import LogIn from "./Login/index.js";
